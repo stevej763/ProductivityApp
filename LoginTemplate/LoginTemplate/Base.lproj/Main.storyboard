@@ -16,9 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeBackground" translatesAutoresizingMaskIntoConstraints="NO" id="8e5-aM-awd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                <color key="backgroundColor" name="PeterRiver"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundTemplate" translatesAutoresizingMaskIntoConstraints="NO" id="UBr-aK-3wg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="tintColor" name="Orange"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dvx-JD-HaG">
                                 <rect key="frame" x="107" y="50" width="200" height="200"/>
@@ -29,7 +29,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ngW-q6-43A">
-                                <rect key="frame" x="107" y="634" width="200" height="115"/>
+                                <rect key="frame" x="107" y="659" width="200" height="115"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9K4-hb-5r5">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
@@ -66,13 +66,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Dvx-JD-HaG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5uH-eB-stU"/>
-                            <constraint firstItem="8e5-aM-awd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="DdV-kF-TpW"/>
-                            <constraint firstAttribute="bottom" secondItem="8e5-aM-awd" secondAttribute="bottom" id="JN9-dv-DYH"/>
-                            <constraint firstItem="8e5-aM-awd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PqW-Md-x2X"/>
                             <constraint firstItem="ngW-q6-43A" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TRP-T5-2fE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ngW-q6-43A" secondAttribute="bottom" constant="25" id="YZD-M5-q3Z"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8e5-aM-awd" secondAttribute="trailing" id="svl-X9-efh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ngW-q6-43A" secondAttribute="bottom" id="YZD-M5-q3Z"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UBr-aK-3wg" secondAttribute="trailing" id="deB-06-FQz"/>
+                            <constraint firstItem="UBr-aK-3wg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hJf-dQ-Nc0"/>
+                            <constraint firstItem="UBr-aK-3wg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="s2G-v9-hv6"/>
                             <constraint firstItem="Dvx-JD-HaG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="zE6-Rj-0aZ"/>
+                            <constraint firstAttribute="bottom" secondItem="UBr-aK-3wg" secondAttribute="bottom" constant="34" id="zju-TS-aHX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -107,15 +107,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HomeBackground" width="3576" height="5364"/>
+        <image name="BackgroundTemplate" width="3576" height="5364"/>
         <namedColor name="Clouds">
-            <color red="0.92692041400000003" green="0.94032096860000003" blue="0.94645720720000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92699998617172241" green="0.93999999761581421" blue="0.94599997997283936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MidnightBlue">
             <color red="0.17399999499320984" green="0.24199999868869781" blue="0.31299999356269836" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="PeterRiver">
-            <color red="0.20100000500679016" green="0.59600001573562622" blue="0.86000001430511475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Orange">
+            <color red="0.95300000905990601" green="0.61000001430511475" blue="0.10700000077486038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

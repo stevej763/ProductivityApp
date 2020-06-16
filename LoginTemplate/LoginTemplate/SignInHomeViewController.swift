@@ -22,6 +22,10 @@ class SignInHomeViewController: UIViewController {
         LogoView.layer.cornerRadius = 100.0
         LoginButton.layer.cornerRadius = 25.0
         SignUpButton.layer.cornerRadius = 25.0
+        
+        (UIApplication.shared.delegate as! AppDelegate).restrictRotation = .portrait
+        
+        
     }
     
     

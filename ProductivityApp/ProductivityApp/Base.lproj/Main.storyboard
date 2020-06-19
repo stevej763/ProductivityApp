@@ -11,7 +11,7 @@
         <!--SignIn-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="SignIn" id="BYZ-38-t0r" customClass="SignInHomeViewController" customModule="LoginTemplate" sceneMemberID="viewController">
+                <viewController title="SignIn" id="BYZ-38-t0r" customClass="SignInHomeViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +93,7 @@
         <!--Login-->
         <scene sceneID="V4r-gp-dvb">
             <objects>
-                <viewController id="5iF-6T-gxv" customClass="LoginViewController" customModule="LoginTemplate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5iF-6T-gxv" customClass="LoginViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ZQ-HF-9WR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,7 +175,7 @@
         <!--App Home View Controller-->
         <scene sceneID="raa-IW-spC">
             <objects>
-                <viewController id="LrA-tW-oxc" customClass="AppHomeViewController" customModule="LoginTemplate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LrA-tW-oxc" customClass="AppHomeViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dbB-BE-FVP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,7 +191,7 @@
         <!--Sign Up-->
         <scene sceneID="V6l-MQ-1Nr">
             <objects>
-                <viewController id="sSD-AL-ZrJ" customClass="SignUpViewController" customModule="LoginTemplate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sSD-AL-ZrJ" customClass="SignUpViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CP9-wg-FlQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,7 +316,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lOK-wu-UCL"/>
+        <segue reference="LFO-6T-4lw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="TemplateBackground" width="3576" height="5364"/>

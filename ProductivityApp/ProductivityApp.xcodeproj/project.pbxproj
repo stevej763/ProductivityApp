@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA80C0252499727300F4614F /* LoginTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA80C0252499727300F4614F /* ProductivityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductivityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80C0282499727300F4614F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA80C02A2499727300F4614F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AA80C02C2499727300F4614F /* SignInHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHomeViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		AA80C01C2499727300F4614F = {
 			isa = PBXGroup;
 			children = (
-				AA80C0272499727300F4614F /* LoginTemplate */,
+				AA80C0272499727300F4614F /* ProductivityApp */,
 				AA80C0262499727300F4614F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +54,12 @@
 		AA80C0262499727300F4614F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA80C0252499727300F4614F /* LoginTemplate.app */,
+				AA80C0252499727300F4614F /* ProductivityApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AA80C0272499727300F4614F /* LoginTemplate */ = {
+		AA80C0272499727300F4614F /* ProductivityApp */ = {
 			isa = PBXGroup;
 			children = (
 				AA80C0282499727300F4614F /* AppDelegate.swift */,
@@ -70,7 +70,7 @@
 				AA80C0332499727700F4614F /* LaunchScreen.storyboard */,
 				AA80C0362499727700F4614F /* Info.plist */,
 			);
-			path = LoginTemplate;
+			path = ProductivityApp;
 			sourceTree = "<group>";
 		};
 		AAB375E1249AA4F500055CF2 /* Controller */ = {
@@ -87,9 +87,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AA80C0242499727300F4614F /* LoginTemplate */ = {
+		AA80C0242499727300F4614F /* ProductivityApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA80C0392499727700F4614F /* Build configuration list for PBXNativeTarget "LoginTemplate" */;
+			buildConfigurationList = AA80C0392499727700F4614F /* Build configuration list for PBXNativeTarget "ProductivityApp" */;
 			buildPhases = (
 				AA80C0212499727300F4614F /* Sources */,
 				AA80C0222499727300F4614F /* Frameworks */,
@@ -99,9 +99,9 @@
 			);
 			dependencies = (
 			);
-			name = LoginTemplate;
+			name = ProductivityApp;
 			productName = LoginTemplate;
-			productReference = AA80C0252499727300F4614F /* LoginTemplate.app */;
+			productReference = AA80C0252499727300F4614F /* ProductivityApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -119,7 +119,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AA80C0202499727300F4614F /* Build configuration list for PBXProject "LoginTemplate" */;
+			buildConfigurationList = AA80C0202499727300F4614F /* Build configuration list for PBXProject "ProductivityApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -132,7 +132,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AA80C0242499727300F4614F /* LoginTemplate */,
+				AA80C0242499727300F4614F /* ProductivityApp */,
 			);
 		};
 /* End PBXProject section */
@@ -306,12 +306,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R8D3TFCC85;
-				INFOPLIST_FILE = LoginTemplate/Info.plist;
+				INFOPLIST_FILE = ProductivityApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.uk.95design.LoginTemplate;
+				PRODUCT_BUNDLE_IDENTIFIER = co.uk.95design.ProductivityApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -324,12 +324,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R8D3TFCC85;
-				INFOPLIST_FILE = LoginTemplate/Info.plist;
+				INFOPLIST_FILE = ProductivityApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.uk.95design.LoginTemplate;
+				PRODUCT_BUNDLE_IDENTIFIER = co.uk.95design.ProductivityApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -339,7 +339,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA80C0202499727300F4614F /* Build configuration list for PBXProject "LoginTemplate" */ = {
+		AA80C0202499727300F4614F /* Build configuration list for PBXProject "ProductivityApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA80C0372499727700F4614F /* Debug */,
@@ -348,7 +348,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA80C0392499727700F4614F /* Build configuration list for PBXNativeTarget "LoginTemplate" */ = {
+		AA80C0392499727700F4614F /* Build configuration list for PBXNativeTarget "ProductivityApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA80C03A2499727700F4614F /* Debug */,

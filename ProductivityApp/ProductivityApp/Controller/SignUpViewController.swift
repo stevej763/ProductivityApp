@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpViewController: UIViewController {
     
@@ -18,38 +19,22 @@ class SignUpViewController: UIViewController {
     
 
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordField.delegate = self
         passwordConfirmationField.delegate = self
         
-        //set field background
-        fieldBackground.backgroundColor = UIColor(named: "MidnightBlue")
-        fieldBackground.alpha = 0.9
-        fieldBackground.layer.cornerRadius = 8.0
-        fieldBackground.layer.borderWidth = 5
-        fieldBackground.layer.borderColor = UIColor(named: "WetAsphalt")?.cgColor
-        
-        signUpButton.layer.cornerRadius = 25.0
-        signUpButton.layer.borderWidth = 5.0
-        signUpButton.layer.borderColor = UIColor(named: "WetAsphalt")?.cgColor
+        formatView()
         
         //close keyboard on tap
         let tap = UITapGestureRecognizer(target:self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
           
         
-        //uncomment for firebase credential check
-//         if Auth.auth().currentUser != nil {
-//                  self.performSegue(withIdentifier: "LoginToHome", sender: nil)
-//               }
-//
-//
-//               //debug logout user
-//               if Auth.auth().currentUser?.uid != nil{
-//                   useridcheck.text = Auth.auth().currentUser!.uid
-//               }
+       
         
         
         
@@ -58,6 +43,15 @@ class SignUpViewController: UIViewController {
 
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            self.signUpButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }) { (true) in
+            UIView.animate(withDuration: 0.1) {
+                self.signUpButton.transform = .identity
+            }
+            
+        }
         print("sign up button pressed!")
         //Add sign up firebase code here
         if emailTextField.text == "" {
@@ -82,37 +76,34 @@ class SignUpViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             
         } else {
-            //firebase authentication uncomment when firebase pod loaded
-            //                Auth.auth().createUser(withEmail: SignUpEmail.text!, password: SignUpPassword.text!){ (authResult, error) in
-            //                    if error == nil {
-            //                        print("Account Created!")
-            //                        let db = Firestore.firestore()
-            //                        let accountCreationDate = Date()
-            //                        let newUserID = authResult!.user.uid
-            //                        db.collection("users").document(newUserID).setData(["AccountCreatedOn":accountCreationDate, "emailIsVerified": false])
-            //
-            //                        print("New user link created with id \(authResult!.user.uid) on \(accountCreationDate)")
-            //                        self.moveToHome()
-            //                        Auth.auth().currentUser?.sendEmailVerification { (error) in
-            //                            if error == nil {
-            //                                print("email verification sent")
-            //                            }
-            //                            else{
-            //                            print(error!.localizedDescription)
-            //                        }
-            //                        }
-            //                    }
-            //                    else{
-            //                        print("error creating account")
-            //                            let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-            //                            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            //
-            //                            alertController.addAction(defaultAction)
-            //                        self.present(alertController, animated: true, completion: nil)
-            //                        }
-            //
-            //
-            //                }
+            //firebase authentication
+            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordField.text!){ (authResult, error) in
+                if error == nil {
+                    let db = Firestore.firestore()
+                    let accountCreationDate = NSTimeIntervalSince1970
+                    let newUserID = authResult!.user.uid
+                    db.collection("users").document(newUserID).setData(["AccountCreatedOn":accountCreationDate, "emailIsVerified": false])
+                    
+                    print("New user link created with id \(authResult!.user.uid) on \(accountCreationDate)")
+                    //segue to app home
+                    self.performSegue(withIdentifier: "SignUpToUserDetails", sender: self)
+                    
+                    
+                    //send user email verification next - need to add
+                    
+                    
+                }
+                else{
+                    print("error creating account")
+                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
+                
+            }
             
             
         }
@@ -123,8 +114,19 @@ class SignUpViewController: UIViewController {
 
    
     
-    
- 
+    //make the view look nice
+    fileprivate func formatView() {
+        //set field background
+        fieldBackground.backgroundColor = UIColor(named: "MidnightBlue")
+        fieldBackground.alpha = 0.9
+        fieldBackground.layer.cornerRadius = 8.0
+        fieldBackground.layer.borderWidth = 5
+        fieldBackground.layer.borderColor = UIColor(named: "WetAsphalt")?.cgColor
+        
+        signUpButton.layer.cornerRadius = 25.0
+        signUpButton.layer.borderWidth = 5.0
+        signUpButton.layer.borderColor = UIColor(named: "WetAsphalt")?.cgColor
+    }
 }
 
 //MARK:- extension for textfield delegate

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInHomeViewController: UIViewController {
+class SignedOutViewController: UIViewController {
 
 
     

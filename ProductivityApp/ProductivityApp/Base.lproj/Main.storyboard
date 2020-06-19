@@ -11,7 +11,7 @@
         <!--SignIn-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="SignIn" id="BYZ-38-t0r" customClass="SignInHomeViewController" customModule="ProductivityApp" sceneMemberID="viewController">
+                <viewController title="SignIn" id="BYZ-38-t0r" customClass="SignedOutViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,7 +165,7 @@
                         <outlet property="loginButton" destination="mG7-eb-Nfr" id="qMl-Nl-j6v"/>
                         <outlet property="userEmailField" destination="uTb-Vs-pGL" id="UWj-sJ-4gr"/>
                         <outlet property="userPasswordField" destination="2AX-Cg-cRI" id="OUw-Mm-Xnl"/>
-                        <segue destination="LrA-tW-oxc" kind="show" identifier="GoToHome" id="lOK-wu-UCL"/>
+                        <segue destination="LrA-tW-oxc" kind="show" identifier="LoginToHome" id="lOK-wu-UCL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Za-Oe-M5Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -284,7 +284,7 @@
                         <outlet property="passwordConfirmationField" destination="Zpp-Wz-uhb" id="Rms-9M-j0p"/>
                         <outlet property="passwordField" destination="QYO-kd-Mne" id="jUh-YF-hyD"/>
                         <outlet property="signUpButton" destination="Gde-Be-jz4" id="z4C-W8-CVE"/>
-                        <segue destination="LrA-tW-oxc" kind="show" identifier="GoToHome" id="LFO-6T-4lw"/>
+                        <segue destination="LrA-tW-oxc" kind="show" identifier="SignUpToHome" id="LFO-6T-4lw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEa-4o-9lF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -316,7 +316,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LFO-6T-4lw"/>
+        <segue reference="lOK-wu-UCL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="TemplateBackground" width="3576" height="5364"/>

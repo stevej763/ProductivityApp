@@ -40,13 +40,84 @@ class SignUpViewController: UIViewController {
         view.addGestureRecognizer(tap)
           
         
+        //uncomment for firebase credential check
+//         if Auth.auth().currentUser != nil {
+//                  self.performSegue(withIdentifier: "LoginToHome", sender: nil)
+//               }
+//
+//
+//               //debug logout user
+//               if Auth.auth().currentUser?.uid != nil{
+//                   useridcheck.text = Auth.auth().currentUser!.uid
+//               }
+        
+        
+        
     }
     
 
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
         print("sign up button pressed!")
-    //Add sign up firebase code here
+        //Add sign up firebase code here
+        if emailTextField.text == "" {
+            let alertController = UIAlertController(title: "Email Blank", message: "Please enter a valid email address.", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        if passwordField.text == "" {
+            let alertController = UIAlertController(title: "Password Invalid", message: "Please enter a password", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        if passwordField.text != passwordConfirmationField.text {
+            let alertController = UIAlertController(title: "Passwords do not match", message: "Please re-type password", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+        } else {
+            //firebase authentication uncomment when firebase pod loaded
+            //                Auth.auth().createUser(withEmail: SignUpEmail.text!, password: SignUpPassword.text!){ (authResult, error) in
+            //                    if error == nil {
+            //                        print("Account Created!")
+            //                        let db = Firestore.firestore()
+            //                        let accountCreationDate = Date()
+            //                        let newUserID = authResult!.user.uid
+            //                        db.collection("users").document(newUserID).setData(["AccountCreatedOn":accountCreationDate, "emailIsVerified": false])
+            //
+            //                        print("New user link created with id \(authResult!.user.uid) on \(accountCreationDate)")
+            //                        self.moveToHome()
+            //                        Auth.auth().currentUser?.sendEmailVerification { (error) in
+            //                            if error == nil {
+            //                                print("email verification sent")
+            //                            }
+            //                            else{
+            //                            print(error!.localizedDescription)
+            //                        }
+            //                        }
+            //                    }
+            //                    else{
+            //                        print("error creating account")
+            //                            let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+            //                            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            //
+            //                            alertController.addAction(defaultAction)
+            //                        self.present(alertController, animated: true, completion: nil)
+            //                        }
+            //
+            //
+            //                }
+            
+            
+        }
+        
+        
     }
     
 
@@ -60,6 +131,9 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController: UITextFieldDelegate {
     
+    
+    //move the keyboard focus to the next box or close if on the final box
+    //once signup configured add in signup method
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             if textField == self.emailTextField {
                 self.passwordField.becomeFirstResponder()

@@ -11,7 +11,7 @@ import Firebase
 
 class SignedOutViewController: UIViewController {
 
-
+let auth = Auth.auth()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -40,10 +40,10 @@ class SignedOutViewController: UIViewController {
         
         //debug logout user
         if Auth.auth().currentUser?.uid != nil{
-            print(Auth.auth().currentUser!.uid)
+            print("Current user ID: \(auth.currentUser!.uid)")
         }
     }
-    
+    @IBAction func unwindToViewController(segue: UIStoryboardSegue) {}
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)

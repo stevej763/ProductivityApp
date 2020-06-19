@@ -358,9 +358,11 @@
                         <outlet property="userDisplayName" destination="Lky-5e-EbQ" id="JYV-Ib-0AC"/>
                         <outlet property="userEmail" destination="suK-cO-y5q" id="qoO-Dq-xEW"/>
                         <outlet property="userId" destination="wDv-dP-Oet" id="Iw4-cy-6Cp"/>
+                        <segue destination="BrA-qg-dob" kind="unwind" identifier="UnwindLogOut" unwindAction="unwindToViewControllerWithSegue:" id="fyM-vm-ZER"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="toH-f5-NCe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="BrA-qg-dob" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5403" y="81"/>
         </scene>
@@ -439,12 +441,18 @@
                                     <action selector="signUpButtonPressed:" destination="sSD-AL-ZrJ" eventType="touchUpInside" id="r75-Lq-ibQ"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pi4-xF-drP">
+                                <rect key="frame" x="188.5" y="394" width="37" height="37"/>
+                                <color key="tintColor" name="SunFlower"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Wus-cd-sg7" secondAttribute="bottom" id="19Z-Xd-KDC"/>
+                            <constraint firstItem="pi4-xF-drP" firstAttribute="centerX" secondItem="CP9-wg-FlQ" secondAttribute="centerX" id="LTG-oH-9hr"/>
                             <constraint firstItem="Gde-Be-jz4" firstAttribute="top" secondItem="oZ8-FM-j1N" secondAttribute="bottom" constant="100" id="NkN-39-ySu"/>
                             <constraint firstItem="oZ8-FM-j1N" firstAttribute="centerY" secondItem="CP9-wg-FlQ" secondAttribute="centerY" constant="-150" id="Tpw-4Q-MYp"/>
+                            <constraint firstItem="pi4-xF-drP" firstAttribute="top" secondItem="oZ8-FM-j1N" secondAttribute="bottom" constant="40" id="U9s-p9-bIJ"/>
                             <constraint firstAttribute="trailing" secondItem="Wus-cd-sg7" secondAttribute="trailing" id="dV4-ni-btW"/>
                             <constraint firstItem="oZ8-FM-j1N" firstAttribute="centerX" secondItem="CP9-wg-FlQ" secondAttribute="centerX" id="dcO-b5-Qh3"/>
                             <constraint firstItem="Gde-Be-jz4" firstAttribute="centerX" secondItem="CP9-wg-FlQ" secondAttribute="centerX" id="jbL-mL-8Le"/>
@@ -460,6 +468,7 @@
                         <outlet property="passwordConfirmationField" destination="Zpp-Wz-uhb" id="Rms-9M-j0p"/>
                         <outlet property="passwordField" destination="QYO-kd-Mne" id="jUh-YF-hyD"/>
                         <outlet property="signUpButton" destination="Gde-Be-jz4" id="z4C-W8-CVE"/>
+                        <outlet property="spinner" destination="pi4-xF-drP" id="YbJ-ON-Ypn"/>
                         <segue destination="Bpz-u2-QSG" kind="show" identifier="SignUpToUserDetails" id="e7j-yB-chP"/>
                     </connections>
                 </viewController>
@@ -506,6 +515,9 @@
         </namedColor>
         <namedColor name="Orange">
             <color red="0.95300000905990601" green="0.61000001430511475" blue="0.10700000077486038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SunFlower">
+            <color red="0.94499999284744263" green="0.76999998092651367" blue="0.14300000667572021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

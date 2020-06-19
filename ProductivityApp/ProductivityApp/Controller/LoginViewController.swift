@@ -99,7 +99,7 @@ extension LoginViewController: UITextFieldDelegate {
                 self.userPasswordField.becomeFirstResponder()
             }
             if textField == self.userPasswordField {
-                self.firebaseAuth()
+                self.view.endEditing(true)
             }
             return true
     }

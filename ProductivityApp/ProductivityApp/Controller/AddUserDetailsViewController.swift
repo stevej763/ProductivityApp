@@ -60,6 +60,7 @@ class AddUserDetailsViewController: UIViewController {
     @IBAction func enterButtonPressed(_ sender: UIButton) {
         if displayNameField.text != "" {
             updateUserProfile()
+            
         } else {
             displayNameField.placeholder = "Add a display name here"
         }
@@ -80,6 +81,11 @@ class AddUserDetailsViewController: UIViewController {
     
     
     func updateUserProfile(){
+        view.endEditing(true)
+        //add animation here to show the app is doing something
+        
+        
+        
         guard let user = auth.currentUser?.uid else {return}
         let storageRef = storage.reference()
         let profileRef = storageRef.child(user).child("\(user).png")
@@ -108,6 +114,7 @@ class AddUserDetailsViewController: UIViewController {
                             changeRequest?.commitChanges(completion: { error in
                                 if error == nil {
                                     print("user profile picture updated")
+                                    self.performSegue(withIdentifier: "ProfileCompleteSegue", sender: self)
                                 } else {
                                     print("There was an error updating the profile picture \(error.debugDescription)")
                                 }

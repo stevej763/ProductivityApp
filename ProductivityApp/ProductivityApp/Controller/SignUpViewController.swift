@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordConfirmationField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
 
     
@@ -26,7 +27,9 @@ class SignUpViewController: UIViewController {
         emailTextField.delegate = self
         passwordField.delegate = self
         passwordConfirmationField.delegate = self
-        
+        spinner.stopAnimating()
+        spinner.hidesWhenStopped = true
+        spinner.color = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         formatView()
         
         //close keyboard on tap
@@ -43,6 +46,8 @@ class SignUpViewController: UIViewController {
 
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
+        spinner.isHidden = false
+        spinner.startAnimating()
         
         UIView.animate(withDuration: 0.1, animations: {
             self.signUpButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)

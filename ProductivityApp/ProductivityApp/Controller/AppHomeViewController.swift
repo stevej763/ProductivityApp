@@ -24,7 +24,7 @@ class AppHomeViewController: UIViewController {
         if let user = firebaseAuth.currentUser {
             
             
-            print(user.photoURL)
+            //print(user.photoURL)
             
             
             
@@ -32,8 +32,13 @@ class AppHomeViewController: UIViewController {
             
             userEmail.text = user.email!
             userId.text = user.uid
-            userDisplayName.text = user.displayName!
-            imageURL.text = user.photoURL?.absoluteString
+            if let displayName = user.displayName {
+                userDisplayName.text = displayName
+            }
+            if let imageUrl = user.photoURL {
+                imageURL.text = imageUrl.absoluteString
+            }
+            
             
             
             
@@ -55,10 +60,16 @@ class AppHomeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+
+    
     @IBAction func logoutPressed(_ sender: UIButton) {
         do {
                try Auth.auth().signOut()
+
+                self.performSegue(withIdentifier: "UnwindLogOut", sender: self)
                 print("Logged Out")
+            
            }
         catch let signOutError as NSError {
                print ("Error signing out: %@", signOutError)

@@ -85,10 +85,16 @@ class SignUpViewController: UIViewController {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordField.text!){ (authResult, error) in
                 if error == nil {
                     let db = Firestore.firestore()
-                    let accountCreationDate = NSTimeIntervalSince1970
+                    let accountCreationDate = Date().timeIntervalSince1970
                     let newUserID = authResult!.user.uid
                     db.collection("users").document(newUserID).setData(["AccountCreatedOn":accountCreationDate, "emailIsVerified": false])
+                 
                     
+                    let date = NSDate(timeIntervalSince1970: accountCreationDate)
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "EEEE, MMM d, yyyy"
+                    let printDate = formatter.string(from: date as Date)
+                    print(printDate)
                     print("New user link created with id \(authResult!.user.uid) on \(accountCreationDate)")
                     //segue to app home
                     self.performSegue(withIdentifier: "SignUpToUserDetails", sender: self)

@@ -19,6 +19,7 @@
 		AAB375E3249AA54200055CF2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB375E2249AA54200055CF2 /* SignUpViewController.swift */; };
 		AAB375E5249AA54E00055CF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB375E4249AA54E00055CF2 /* LoginViewController.swift */; };
 		AAB375E7249AA56200055CF2 /* AppHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB375E6249AA56200055CF2 /* AppHomeViewController.swift */; };
+		AAB817DE249D8640004A66FB /* LoginAndSignupNavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB817DD249D8640004A66FB /* LoginAndSignupNavBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		AAB375E2249AA54200055CF2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		AAB375E4249AA54E00055CF2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AAB375E6249AA56200055CF2 /* AppHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHomeViewController.swift; sourceTree = "<group>"; };
+		AAB817DD249D8640004A66FB /* LoginAndSignupNavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndSignupNavBarViewController.swift; sourceTree = "<group>"; };
 		CCFBF299A2B8E501041952AE /* Pods-ProductivityApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductivityApp.release.xcconfig"; path = "Target Support Files/Pods-ProductivityApp/Pods-ProductivityApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 		AAB375E1249AA4F500055CF2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AAB817DD249D8640004A66FB /* LoginAndSignupNavBarViewController.swift */,
 				AA80C02C2499727300F4614F /* SignedOutViewController.swift */,
 				AAB375E2249AA54200055CF2 /* SignUpViewController.swift */,
 				AA0A0140249D23550008D54C /* AddUserDetailsViewController.swift */,
@@ -236,6 +239,7 @@
 				AAB375E5249AA54E00055CF2 /* LoginViewController.swift in Sources */,
 				AA0A0141249D23550008D54C /* AddUserDetailsViewController.swift in Sources */,
 				AA80C02B2499727300F4614F /* SceneDelegate.swift in Sources */,
+				AAB817DE249D8640004A66FB /* LoginAndSignupNavBarViewController.swift in Sources */,
 				AAB375E7249AA56200055CF2 /* AppHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,22 +12,23 @@ class AppHomeViewController: UIViewController {
 
     let firebaseAuth = Auth.auth()
     
+    @IBOutlet weak var barProfileIcon: UIBarButtonItem!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var imageURL: UILabel!
     @IBOutlet weak var userId: UILabel!
     @IBOutlet weak var userDisplayName: UILabel!
     @IBOutlet weak var userEmail: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // debug current user
         if let user = firebaseAuth.currentUser {
             
-            
+            getImage()
             //print(user.photoURL)
-            
-            
-            
+            profileImage.layer.cornerRadius = 60
             
             
             userEmail.text = user.email!
@@ -49,16 +50,20 @@ class AppHomeViewController: UIViewController {
         
     }
     
+    
+
+    
+    
     //hide the nav bar when the view appears
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    
+       // navigationController?.setNavigationBarHidden(true, animated: false)
+
 
          }
     
     //undo hiding the nav bar
     override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
+       // navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
 
@@ -80,6 +85,43 @@ class AppHomeViewController: UIViewController {
         
         
     }
+    
+    
+    //MARK:- Get image from profile url
+    
+    func getImage(){
+
+        
+        if let imageUrl = self.firebaseAuth.currentUser?.photoURL {
+            
+            let session = URLSession.shared
+            
+            let dataTask = session.dataTask(with: imageUrl) { (data, response, error) in
+                
+                if error == nil && data != nil {
+                    
+                    let image = UIImage(data: data!)
+                    
+                    
+                    DispatchQueue.main.async {
+                        self.profileImage.image = image
+                        //self.barProfileIcon.image = image
+                    }
+                    
+                } else {
+                    print(error!)
+                }
+                
+                
+                
+            }
+            dataTask.resume()
+        }
+        
+    }
+    
+    
+    
 }
 
 

@@ -84,7 +84,7 @@
                         <outlet property="LoginButton" destination="9K4-hb-5r5" id="QA1-bM-bAn"/>
                         <outlet property="LogoView" destination="Hc0-C7-qmi" id="zFc-WC-wzd"/>
                         <outlet property="SignUpButton" destination="5Iw-LY-4pU" id="Lb0-3I-SdG"/>
-                        <segue destination="LrA-tW-oxc" kind="show" identifier="AlreadyLoggedIn" id="QEn-Ue-zhr"/>
+                        <segue destination="rSr-7n-sA2" kind="presentation" identifier="AlreadyLoggedIn" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="QEn-Ue-zhr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -166,7 +166,7 @@
                         <outlet property="loginButton" destination="mG7-eb-Nfr" id="qMl-Nl-j6v"/>
                         <outlet property="userEmailField" destination="uTb-Vs-pGL" id="UWj-sJ-4gr"/>
                         <outlet property="userPasswordField" destination="2AX-Cg-cRI" id="OUw-Mm-Xnl"/>
-                        <segue destination="LrA-tW-oxc" kind="show" identifier=" LoginToHome" id="lOK-wu-UCL"/>
+                        <segue destination="rSr-7n-sA2" kind="presentation" identifier=" LoginToHome" modalPresentationStyle="fullScreen" id="lOK-wu-UCL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Za-Oe-M5Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -274,31 +274,31 @@
                         <outlet property="enterAppButton" destination="a2v-qk-1e5" id="vNz-sK-nMR"/>
                         <outlet property="profilePicture" destination="yPf-4l-pzN" id="pO9-tz-6yC"/>
                         <outlet property="userInfoView" destination="v8h-h0-xIV" id="d11-Sb-x4k"/>
-                        <segue destination="LrA-tW-oxc" kind="show" identifier="profileSkippedSegue" id="5i7-WC-Fu9"/>
-                        <segue destination="LrA-tW-oxc" kind="show" identifier="ProfileCompleteSegue" id="qac-3d-xAr"/>
+                        <segue destination="rSr-7n-sA2" kind="show" identifier="profileSkippedSegue" id="5i7-WC-Fu9"/>
+                        <segue destination="rSr-7n-sA2" kind="presentation" identifier="ProfileCompleteSegue" modalPresentationStyle="fullScreen" id="qac-3d-xAr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZU-ab-zX5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4600" y="-269"/>
         </scene>
-        <!--App Home View Controller-->
+        <!--Home-->
         <scene sceneID="raa-IW-spC">
             <objects>
                 <viewController id="LrA-tW-oxc" customClass="AppHomeViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dbB-BE-FVP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rdM-ZA-S55">
-                                <rect key="frame" x="147" y="10" width="120" height="120"/>
+                                <rect key="frame" x="147" y="98" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="bQB-yH-DlB"/>
                                     <constraint firstAttribute="height" constant="120" id="urj-T7-Qc9"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hfd-Vp-I7n">
-                                <rect key="frame" x="0.0" y="140" width="414" height="82"/>
+                                <rect key="frame" x="0.0" y="228" width="414" height="82"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQC-9Z-JPL">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
@@ -331,7 +331,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jL7-Gh-vZz">
-                                <rect key="frame" x="185" y="272" width="44" height="30"/>
+                                <rect key="frame" x="185" y="360" width="44" height="30"/>
                                 <state key="normal" title="logout"/>
                                 <connections>
                                     <action selector="logoutPressed:" destination="LrA-tW-oxc" eventType="touchUpInside" id="kgy-D3-QWS"/>
@@ -351,8 +351,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qpW-vT-GrN"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qk0-BR-vpl"/>
+                    <navigationItem key="navigationItem" title="Home" id="qk0-BR-vpl">
+                        <barButtonItem key="rightBarButtonItem" image="person.circle" catalog="system" id="FQv-TC-ZUt"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="barProfileIcon" destination="FQv-TC-ZUt" id="4gx-J4-Sd9"/>
                         <outlet property="imageURL" destination="FQC-9Z-JPL" id="bCN-WS-3rI"/>
                         <outlet property="profileImage" destination="rdM-ZA-S55" id="7wR-br-Nfs"/>
                         <outlet property="userDisplayName" destination="Lky-5e-EbQ" id="JYV-Ib-0AC"/>
@@ -364,7 +367,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="toH-f5-NCe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="BrA-qg-dob" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5403" y="81"/>
+            <point key="canvasLocation" x="6581" y="65"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="V6l-MQ-1Nr">
@@ -476,10 +479,10 @@
             </objects>
             <point key="canvasLocation" x="3718.840579710145" y="-481.47321428571428"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Login And Signup Nav Bar View Controller-->
         <scene sceneID="V5F-qJ-WkJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FGd-J5-bdM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FGd-J5-bdM" customClass="LoginAndSignupNavBarViewController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="abe-fx-6uv">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -499,9 +502,28 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="138.61607142857142"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="91X-KU-M03">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rSr-7n-sA2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="k6z-1b-s4l"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tI5-E1-7tn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LrA-tW-oxc" kind="relationship" relationship="rootViewController" id="j6U-gI-a7b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BZM-Zj-H9i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5620" y="80"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qac-3d-xAr"/>
+        <segue reference="QEn-Ue-zhr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="TemplateBackground" width="3576" height="5364"/>

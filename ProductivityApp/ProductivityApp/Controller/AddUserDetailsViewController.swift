@@ -88,11 +88,11 @@ class AddUserDetailsViewController: UIViewController {
         
         guard let user = auth.currentUser?.uid else {return}
         let storageRef = storage.reference()
-        let profileRef = storageRef.child(user).child("\(user).png")
+        let profileRef = storageRef.child(user).child("\(user).jpg")
         let metadata = StorageMetadata()
         metadata.contentType = "image/png"
         
-        if let imageData = self.profilePicture.image?.pngData() {
+        if let imageData = self.profilePicture.image?.jpegData(compressionQuality: 0.7) {
             
             profileRef.putData(imageData, metadata: metadata) { (response, error) in
                 if error != nil {
@@ -160,7 +160,7 @@ class AddUserDetailsViewController: UIViewController {
         
     }
     
-    //make the view look nicer
+    //MARK:-  format and make the view look nicer
     fileprivate func formatView() {
         userInfoView.backgroundColor = UIColor(named: "MidnightBlue")
         userInfoView.alpha = 0.9

@@ -33,8 +33,15 @@ let auth = Auth.auth()
         
         
         //check if user has logged in already
+
+    }
+    @IBAction func unwindToViewController(segue: UIStoryboardSegue) {}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
         if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: self)
+            print("already logged in")
         }
         
         
@@ -42,11 +49,7 @@ let auth = Auth.auth()
         if Auth.auth().currentUser?.uid != nil{
             print("Current user ID: \(auth.currentUser!.uid)")
         }
-    }
-    @IBAction func unwindToViewController(segue: UIStoryboardSegue) {}
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)

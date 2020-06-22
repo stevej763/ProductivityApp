@@ -38,7 +38,7 @@ class AddUserDetailsViewController: UIViewController {
         
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
-        //imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         
        
@@ -67,56 +67,54 @@ class AddUserDetailsViewController: UIViewController {
     }
     
     
-    
-    
-    
-    // segue to app home if skip button pressed
-    @IBAction func skipButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "profileSkippedSegue", sender: self)
-    }
-    
-    
-    
-    
-    
-    
     func updateUserProfile(){
         view.endEditing(true)
         //add animation here to show the app is doing something
+        print("update user pressed")
         
         
-        
+        //check there is a current user
         guard let user = auth.currentUser?.uid else {return}
+        
+        //create firebase storage reference
         let storageRef = storage.reference()
+        //create folder structure in storage reference
         let profileRef = storageRef.child(user).child("\(user).jpg")
+        //init metadata
         let metadata = StorageMetadata()
+        //set file type
         metadata.contentType = "image/png"
         
+        //convert UIImage to jpeg data
         if let imageData = self.profilePicture.image?.jpegData(compressionQuality: 0.7) {
             
+            //store a local copy of the image here for quick access in app
+            saveLocalImage(forUser: user, image: imageData)
+            
+            //send data to the firebase storage for cloud access
             profileRef.putData(imageData, metadata: metadata) { (response, error) in
                 if error != nil {
+                    //if there is an error sending the data, print error (need to add notification here)
+                    print("Error at saving photo")
                     print(error!.localizedDescription)
+                    //exit closure
                     return
                 } else {
+                    //get the download url for the uploaded image
                     profileRef.downloadURL { (url, error) in
                         if let imageURL = url?.absoluteString {
-                            print(imageURL)
-                            
-                            
-                            
-                            
-                            
                             
                             let changeRequest = self.auth.currentUser?.createProfileChangeRequest()
                             changeRequest?.photoURL = URL(string: imageURL)
-                            
+                            changeRequest?.displayName = self.displayNameField.text
                             changeRequest?.commitChanges(completion: { error in
-                                if error == nil {
-                                    print("user profile picture updated")
-                                    self.performSegue(withIdentifier: "ProfileCompleteSegue", sender: self)
-                                } else {
+                                if error != nil {
                                     print("There was an error updating the profile picture \(error.debugDescription)")
+                                    
+                                    
+                                } else {
+                                    print("user profile updated")
+                                    self.performSegue(withIdentifier: "ProfileCompleteSegue", sender: self)
                                 }
                             })
                         }
@@ -128,27 +126,6 @@ class AddUserDetailsViewController: UIViewController {
         
         
         
-        
-        
-     
-        
-        
-        
-        
-        
-        
-        
-        let changeRequest = auth.currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = displayNameField.text
-        
-        print("display name updated")
-        changeRequest?.commitChanges(completion: { error in
-            if error == nil {
-                print("user display name changed")
-            } else {
-                print("There was an error updating the username \(error.debugDescription)")
-            }
-        })
     }
     
     
@@ -173,6 +150,28 @@ class AddUserDetailsViewController: UIViewController {
         profilePicture.layer.cornerRadius = 60
         profilePicture.isUserInteractionEnabled = true
     }
+    
+    
+    
+    
+    //MARK:- save profile image to local storage for quick access
+    func saveLocalImage(forUser user: String, image imageData: Data){
+        
+        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let url = documents.appendingPathComponent(user)
+        
+        do {
+            try imageData.write(to: url)
+            print(documents.absoluteURL)
+        } catch {
+            print("error saving image to disk \(error)")
+        }
+        
+    }
+    
+    
+    
+    
     
 }
 

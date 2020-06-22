@@ -60,6 +60,7 @@ class SignUpViewController: UIViewController {
         print("sign up button pressed!")
         //Add sign up firebase code here
         if emailTextField.text == "" {
+            spinner.stopAnimating()
             let alertController = UIAlertController(title: "Email Blank", message: "Please enter a valid email address.", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             
@@ -67,6 +68,7 @@ class SignUpViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
         if passwordField.text == "" {
+            spinner.stopAnimating()
             let alertController = UIAlertController(title: "Password Invalid", message: "Please enter a password", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             
@@ -74,6 +76,7 @@ class SignUpViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
         if passwordField.text != passwordConfirmationField.text {
+            spinner.stopAnimating()
             let alertController = UIAlertController(title: "Passwords do not match", message: "Please re-type password", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             
@@ -84,6 +87,7 @@ class SignUpViewController: UIViewController {
             //firebase authentication
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordField.text!){ (authResult, error) in
                 if error == nil {
+                    
                     let db = Firestore.firestore()
                     let accountCreationDate = Date().timeIntervalSince1970
                     let newUserID = authResult!.user.uid
@@ -96,6 +100,7 @@ class SignUpViewController: UIViewController {
                     let printDate = formatter.string(from: date as Date)
                     print(printDate)
                     print("New user link created with id \(authResult!.user.uid) on \(accountCreationDate)")
+                    self.spinner.stopAnimating()
                     //segue to app home
                     self.performSegue(withIdentifier: "SignUpToUserDetails", sender: self)
                     

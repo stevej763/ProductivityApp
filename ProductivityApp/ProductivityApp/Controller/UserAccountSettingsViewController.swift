@@ -8,16 +8,13 @@
 
 import UIKit
 import Firebase
-class AppHomeViewController: UIViewController {
+class UserAccountSettingsViewController: UITableViewController {
 
     let firebaseAuth = Auth.auth()
     
-    @IBOutlet weak var barProfileIcon: UIBarButtonItem!
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var imageURL: UILabel!
-    @IBOutlet weak var userId: UILabel!
-    @IBOutlet weak var userDisplayName: UILabel!
-    @IBOutlet weak var userEmail: UILabel!
+
+    @IBOutlet weak var ProfilePictureView: UIImageView!
+
     
     
     override func viewDidLoad() {
@@ -26,19 +23,12 @@ class AppHomeViewController: UIViewController {
         // debug current user
         if let user = firebaseAuth.currentUser {
             
-            getImage()
-            //print(user.photoURL)
-            profileImage.layer.cornerRadius = 60
+            title = "Hello, \(user.displayName!)"
+
+            getProfilePicture()
+            ProfilePictureView.layer.cornerRadius = 60
             
-            
-            userEmail.text = user.email!
-            userId.text = user.uid
-            if let displayName = user.displayName {
-                userDisplayName.text = displayName
-            }
-            if let imageUrl = user.photoURL {
-                imageURL.text = imageUrl.absoluteString
-            }
+
             
             
             
@@ -68,7 +58,7 @@ class AppHomeViewController: UIViewController {
     
 
     
-    @IBAction func logoutPressed(_ sender: UIButton) {
+    func logout() {
         do {
                try Auth.auth().signOut()
 
@@ -89,39 +79,48 @@ class AppHomeViewController: UIViewController {
     
     //MARK:- Get image from profile url
     
-    func getImage(){
-
+    func getProfilePicture(){
         
+        //gets the local version of users profile picture for quick loading
+        guard let user = Auth.auth().currentUser?.uid else {return}
+        
+        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let url = documents.appendingPathComponent(user)
+        
+        do {
+            let image = try Data(contentsOf: url)
+            
+            ProfilePictureView.image = UIImage(data: image)
+            
+            print(documents.absoluteURL)
+        } catch {
+            print("error loading image \(error.localizedDescription)")
+        }
+        
+        
+        //updates the local image with the one stored in firebase for up-to-date cloud details
         if let imageUrl = self.firebaseAuth.currentUser?.photoURL {
-            
             let session = URLSession.shared
-            
             let dataTask = session.dataTask(with: imageUrl) { (data, response, error) in
-                
                 if error == nil && data != nil {
-                    
                     let image = UIImage(data: data!)
-                    
-                    
                     DispatchQueue.main.async {
-                        self.profileImage.image = image
-                        //self.barProfileIcon.image = image
+                        self.ProfilePictureView.image = image
                     }
-                    
                 } else {
                     print(error!)
                 }
-                
-                
-                
             }
             dataTask.resume()
         }
-        
     }
+    
+    
+    
     
     
     
 }
 
+//MARK:- Settings TableView
 

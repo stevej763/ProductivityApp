@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
 
         
+        
         return true
     }
 
@@ -41,6 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return self.restrictRotation
     }
 
-
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        if let user = Auth.auth().currentUser {
+            user.reload()
+        }
+    }
+    
+    
+    
 }
 

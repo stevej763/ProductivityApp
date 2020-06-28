@@ -21,6 +21,8 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var displayName: UITextField!
     @IBOutlet weak var userEmailField: UILabel!
     @IBOutlet weak var emailCell: UITableViewCell!
+    @IBOutlet weak var passwordCell: UITableViewCell!
+    
     
     func checkForEmailUpdate(){
         guard let userId = auth.currentUser?.uid else {return}
@@ -67,7 +69,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSettingsTitle()
@@ -77,17 +78,18 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         
         getProfilePicture()
         defineImagePicker()
+        ProfileUpdateCellWasTapped()
+        
+        
         self.displayName.text = self.auth.currentUser?.displayName
         self.userEmailField.text = self.auth.currentUser?.email
         displayName.delegate = self
+        
         auth.currentUser?.reload(completion: { (error) in
             self.displayName.text = self.auth.currentUser?.displayName
         })
-        let imageTap = UITapGestureRecognizer(target: self, action: #selector(self.editProfilePicture))
-        formatProfilePicture(imageTap)
         
-        let emailCellTap = UITapGestureRecognizer(target: self, action: #selector(self.emailRowPressed))
-        emailCell.addGestureRecognizer(emailCellTap)
+        
     }
     
     func formatProfilePicture(_ tap: UITapGestureRecognizer) {
@@ -159,6 +161,17 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
+    fileprivate func ProfileUpdateCellWasTapped() {
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(self.editProfilePicture))
+        formatProfilePicture(imageTap)
+        
+        let emailCellTap = UITapGestureRecognizer(target: self, action: #selector(self.emailRowPressed))
+        emailCell.addGestureRecognizer(emailCellTap)
+        
+        let passwordCellTap = UITapGestureRecognizer(target: self, action: #selector(self.passwordRowPressed))
+        passwordCell.addGestureRecognizer(passwordCellTap)
+    }
+    
     @objc func emailRowPressed(){
         var passwordField = UITextField()
         let alert = UIAlertController(title: "Enter your password to continue", message:"", preferredStyle: .alert)
@@ -199,6 +212,12 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    @objc func passwordRowPressed(){
+        print("Moving to update password page")
+        self.performSegue(withIdentifier: "UpdatePasswordSegue", sender: self)
+        
+    }
+    
     
     
     
@@ -224,7 +243,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print(indexPath.row)
     }
 }
 

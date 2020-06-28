@@ -21,13 +21,10 @@ class UpdateEmailViewController: UIViewController {
     @IBOutlet weak var newEmailTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         currentEmaillabel.text = "Your current account email is: \(user!.email!.description)"
         emailUpdateButton.layer.cornerRadius = 25
-        
         newEmailTextField.keyboardType = .emailAddress
 
         // Do any additional setup after loading the view.

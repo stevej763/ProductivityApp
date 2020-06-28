@@ -11,9 +11,9 @@
         <!--SignIn-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="SignIn" id="BYZ-38-t0r" customClass="SignedOutViewController" customModule="ProductivityApp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SigninViewController" title="SignIn" id="BYZ-38-t0r" customClass="SignedOutViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TemplateBackground" translatesAutoresizingMaskIntoConstraints="NO" id="UBr-aK-3wg">
@@ -96,7 +96,7 @@
             <objects>
                 <viewController id="5iF-6T-gxv" customClass="LoginViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ZQ-HF-9WR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TemplateBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Tec-x6-76A">
@@ -178,7 +178,7 @@
             <objects>
                 <viewController id="Bpz-u2-QSG" customClass="AddUserDetailsViewController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Scm-WQ-BEN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TemplateBackground" translatesAutoresizingMaskIntoConstraints="NO" id="sye-iB-f26">
@@ -269,10 +269,10 @@
             </objects>
             <point key="canvasLocation" x="4487" y="-192"/>
         </scene>
-        <!--App Home View Controller-->
+        <!--AppHomeViewController-->
         <scene sceneID="Z7Z-mI-6P8">
             <objects>
-                <viewController id="KyW-Fk-umt" customClass="AppHomeViewController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AppHomeViewController" title="AppHomeViewController" id="KyW-Fk-umt" customClass="AppHomeViewController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xiv-7k-xZ1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -442,10 +442,12 @@
                     <connections>
                         <outlet property="displayName" destination="i0p-YQ-B7E" id="Ap4-vs-4AY"/>
                         <outlet property="emailCell" destination="iqv-9o-iBw" id="Etw-0z-Wmh"/>
+                        <outlet property="passwordCell" destination="5A0-PL-506" id="CZE-w5-hp7"/>
                         <outlet property="profilePictureView" destination="b02-ri-sNa" id="wme-ap-ndr"/>
                         <outlet property="userEmailField" destination="CCZ-AK-Vce" id="m0E-u7-TRs"/>
                         <segue destination="IRN-p6-0hv" kind="unwind" identifier="UnwindLogOut" unwindAction="unwindToViewControllerWithSegue:" id="hk8-wz-P9X"/>
                         <segue destination="wmC-lT-ysS" kind="showDetail" identifier="UpdateEmailSegue" id="t09-0M-ade"/>
+                        <segue destination="Rhb-MT-USg" kind="showDetail" identifier="UpdatePasswordSegue" id="cyj-hQ-y7t"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40P-Tj-Ysj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -458,7 +460,7 @@
             <objects>
                 <viewController id="wmC-lT-ysS" customClass="UpdateEmailViewController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zyQ-Fx-YfM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7BK-nj-Idl" userLabel="email stack">
@@ -528,14 +530,113 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSF-tH-hD4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7332" y="1405"/>
+            <point key="canvasLocation" x="6896" y="1289"/>
+        </scene>
+        <!--Password Reset View Controller-->
+        <scene sceneID="xZS-wV-eco">
+            <objects>
+                <viewController id="Rhb-MT-USg" customClass="PasswordResetViewController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bv6-ZB-HIL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="j3f-UP-TPJ" userLabel="password stack">
+                                <rect key="frame" x="40" y="100" width="334" height="244.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Your Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ela-rK-4Ad">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="upR-8L-ir3">
+                                        <rect key="frame" x="0.0" y="29.5" width="334" height="156"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tfe-nc-FUy">
+                                                <rect key="frame" x="0.0" y="0.0" width="334" height="42"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="laL-sr-pEK">
+                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES" textContentType="password"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZn-LK-YnG">
+                                                        <rect key="frame" x="0.0" y="42" width="334" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FIa-QR-MNL">
+                                                <rect key="frame" x="0.0" y="72" width="334" height="84"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n8T-Ms-r9n">
+                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="new-password"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KCW-i4-nAw">
+                                                        <rect key="frame" x="0.0" y="42" width="334" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrE-9f-03f" userLabel="Error">
+                                                        <rect key="frame" x="0.0" y="84" width="334" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpg-9f-FYc">
+                                        <rect key="frame" x="0.0" y="194.5" width="334" height="50"/>
+                                        <color key="backgroundColor" name="MidnightBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Zao-2o-m2W"/>
+                                        </constraints>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" name="Clouds"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="passowrdUpdateButtonPressed:" destination="Rhb-MT-USg" eventType="touchUpInside" id="70r-DP-a3w"/>
+                                            <action selector="signUpButtonPressed:" destination="sSD-AL-ZrJ" eventType="touchUpInside" id="87b-cA-f4P"/>
+                                            <action selector="updateEmailPressed:" destination="wmC-lT-ysS" eventType="touchUpInside" id="qtv-NN-yT0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="j3f-UP-TPJ" firstAttribute="leading" secondItem="hU3-IK-bnH" secondAttribute="leading" constant="40" id="6C3-V2-yF0"/>
+                            <constraint firstItem="hU3-IK-bnH" firstAttribute="trailing" secondItem="j3f-UP-TPJ" secondAttribute="trailing" constant="40" id="DJ8-Ga-kGw"/>
+                            <constraint firstItem="j3f-UP-TPJ" firstAttribute="top" secondItem="hU3-IK-bnH" secondAttribute="top" constant="100" id="DeL-Iq-4f1"/>
+                            <constraint firstItem="j3f-UP-TPJ" firstAttribute="centerX" secondItem="Bv6-ZB-HIL" secondAttribute="centerX" id="ta6-fk-blI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hU3-IK-bnH"/>
+                    </view>
+                    <connections>
+                        <outlet property="currentPasswordErrorLabel" destination="eZn-LK-YnG" id="va3-2K-0II"/>
+                        <outlet property="currentPasswordField" destination="laL-sr-pEK" id="097-OE-zJ5"/>
+                        <outlet property="errorLabel" destination="XrE-9f-03f" id="75j-Li-E7q"/>
+                        <outlet property="newPassowrdConfirmFIield" destination="KCW-i4-nAw" id="LTd-gb-s9i"/>
+                        <outlet property="newPasswordField" destination="n8T-Ms-r9n" id="9lc-P7-AsK"/>
+                        <outlet property="updateButton" destination="Hpg-9f-FYc" id="srI-2g-DfH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DK2-rT-N8M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6896" y="1952"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="V6l-MQ-1Nr">
             <objects>
                 <viewController id="sSD-AL-ZrJ" customClass="SignUpViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CP9-wg-FlQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TemplateBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Wus-cd-sg7">
@@ -643,7 +744,7 @@
         <!--Login And Signup Navigation View Controller-->
         <scene sceneID="V5F-qJ-WkJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FGd-J5-bdM" customClass="LoginAndSignupNavigationViewController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="FGd-J5-bdM" customClass="LoginAndSignupNavigationViewController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="abe-fx-6uv">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -666,7 +767,7 @@
         <!--App Home Navigation Controller-->
         <scene sceneID="91X-KU-M03">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rSr-7n-sA2" customClass="AppHomeNavigationController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AppHomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="rSr-7n-sA2" customClass="AppHomeNavigationController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="k6z-1b-s4l"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tI5-E1-7tn">
@@ -684,7 +785,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lOK-wu-UCL"/>
+        <segue reference="QEn-Ue-zhr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="TemplateBackground" width="3576" height="5364"/>

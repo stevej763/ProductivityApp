@@ -16,9 +16,18 @@ struct ProfileUpdate {
     
     let storage = Storage.storage()
     let auth = Auth.auth()
+    let db = Firestore.firestore()
+    
     
     
     func updateDisplayName(newDisplayName: String) {
+        guard let userId = auth.currentUser?.uid else {
+            print("updateDisplayName failed")
+            return
+        }
+        db.collection("users").document(userId).updateData(["displayName":newDisplayName])
+        
+        
         let changeRequest = self.auth.currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = newDisplayName
         changeRequest?.commitChanges(completion: { error in
@@ -31,6 +40,11 @@ struct ProfileUpdate {
                 
             }
         })
+    }
+    
+    func updateEmail(newEmail: String){
+        let userId = auth.currentUser?.uid
+        db.collection("users").document(userId!).updateData(["email":newEmail])
     }
     
     
@@ -57,40 +71,25 @@ struct ProfileUpdate {
     //update the current users profile picture
     func updateProfilePicture(image profilePicture: UIImageView) {
         guard let user = auth.currentUser?.uid else {return}
-        
-        //create firebase storage reference
         let storageRef = storage.reference()
-        //create folder structure in storage reference
         let profileRef = storageRef.child(user).child("\(user).jpg")
-        //init metadata
         let metadata = StorageMetadata()
-        //set file type
         metadata.contentType = "image/png"
-        
         if let imageData = profilePicture.image!.jpegData(compressionQuality: 0.7) {
-            
-            //save data locally
             saveLocalImage(forUser: user, image: imageData)
-            
             profileRef.putData(imageData, metadata: metadata) { (response, error) in
                 if error != nil {
-                    //if there is an error sending the data, print error (need to add notification here)
                     print("Error at saving photo")
                     print(error!.localizedDescription)
-                    //exit closure
                     return
                 } else {
-                    //get the download url for the uploaded image
                     profileRef.downloadURL { (url, error) in
                         if let imageURL = url?.absoluteString {
-                            
                             let changeRequest = self.auth.currentUser?.createProfileChangeRequest()
                             changeRequest?.photoURL = URL(string: imageURL)
                             changeRequest?.commitChanges(completion: { error in
                                 if error != nil {
                                     print("There was an error updating the profile picture \(error.debugDescription)")
-                                    
-                                    
                                 } else {
                                     print("user profile updated")
                                 }
@@ -99,7 +98,6 @@ struct ProfileUpdate {
                     }
                 }
             }
-            
         }
         
     }

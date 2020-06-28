@@ -91,14 +91,8 @@ class SignUpViewController: UIViewController {
                     let db = Firestore.firestore()
                     let accountCreationDate = Date().timeIntervalSince1970
                     let newUserID = authResult!.user.uid
-                    db.collection("users").document(newUserID).setData(["AccountCreatedOn":accountCreationDate, "emailIsVerified": false])
+                    db.collection("users").document(newUserID).setData(["accountCreatedOn":accountCreationDate, "email":self.emailTextField.text!, "emailIsVerified": false])
                  
-                    
-                    let date = NSDate(timeIntervalSince1970: accountCreationDate)
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "EEEE, MMM d, yyyy"
-                    let printDate = formatter.string(from: date as Date)
-                    print(printDate)
                     print("New user link created with id \(authResult!.user.uid) on \(accountCreationDate)")
                     self.spinner.stopAnimating()
                     //segue to app home

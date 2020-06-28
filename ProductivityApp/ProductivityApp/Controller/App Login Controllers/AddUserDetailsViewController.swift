@@ -13,6 +13,8 @@ class AddUserDetailsViewController: UIViewController {
     
     let auth = Auth.auth()
     let storage = Storage.storage()
+    let db = Firestore.firestore()
+
     
     var imagePicker: UIImagePickerController!
     
@@ -21,7 +23,8 @@ class AddUserDetailsViewController: UIViewController {
     @IBOutlet weak var displayNameField: UITextField!
     @IBOutlet weak var enterAppButton: UIButton!
     
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +76,12 @@ class AddUserDetailsViewController: UIViewController {
         print("update user pressed")
         
         
+        //save displayName
+        let profileUpdate = ProfileUpdate()
+        profileUpdate.updateDisplayName(newDisplayName: self.displayNameField.text!)
+        
+        
+        
         //check there is a current user
         guard let user = auth.currentUser?.uid else {return}
         
@@ -103,14 +112,12 @@ class AddUserDetailsViewController: UIViewController {
                     //get the download url for the uploaded image
                     profileRef.downloadURL { (url, error) in
                         if let imageURL = url?.absoluteString {
-                            
                             let changeRequest = self.auth.currentUser?.createProfileChangeRequest()
                             changeRequest?.photoURL = URL(string: imageURL)
                             changeRequest?.displayName = self.displayNameField.text
                             changeRequest?.commitChanges(completion: { error in
                                 if error != nil {
                                     print("There was an error updating the profile picture \(error.debugDescription)")
-                                    
                                     
                                 } else {
                                     print("user profile updated")

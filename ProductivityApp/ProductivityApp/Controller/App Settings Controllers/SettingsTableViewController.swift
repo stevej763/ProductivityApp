@@ -14,39 +14,81 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         let auth = Auth.auth()
         let storage = Storage.storage()
         let updateProfile = ProfileUpdate()
-    
+        let db = Firestore.firestore()
         var imagePicker: UIImagePickerController!
     
     @IBOutlet weak var profilePictureView: UIImageView!
     @IBOutlet weak var displayName: UITextField!
-    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var userEmailField: UILabel!
+    @IBOutlet weak var emailCell: UITableViewCell!
+    
+    func checkForEmailUpdate(){
+        guard let userId = auth.currentUser?.uid else {return}
+        db.collection("users").document(userId)
+        .addSnapshotListener { documentSnapshot, error in
+          guard let document = documentSnapshot else {
+            print("Error fetching document: \(error!)")
+            return
+          }
+          guard let data = document.data() else {
+            print("Document data was empty.")
+            return
+          }
+            print(data)
+            
+            guard let currentEmail = data["email"] as? String else {
+                return
+            }
+            
+            if currentEmail == self.auth.currentUser?.email {
+                
+                let currentDisplayName = data["displayName"] as! String
+                self.userEmailField.text = data["email"] as? String
+                self.title = "\(currentDisplayName)'s Settings"
+                self.displayName.text = currentDisplayName
+                
+            } else {
+                print("email changed")
+                self.logout()
+            }
+            
+            
+            
+        }
+    }
+    
+    func updateSettingsTitle(){
+        if let cloudDisplayName = auth.currentUser?.displayName {
+        title = "\(cloudDisplayName)'s Settings"
+            
+        
+        } else {
+            title = "Settings"
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateSettingsTitle()
+        checkForEmailUpdate()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
+        
         getProfilePicture()
         defineImagePicker()
         self.displayName.text = self.auth.currentUser?.displayName
-        self.emailField.text = self.auth.currentUser?.email
+        self.userEmailField.text = self.auth.currentUser?.email
         displayName.delegate = self
         auth.currentUser?.reload(completion: { (error) in
             self.displayName.text = self.auth.currentUser?.displayName
         })
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(self.editProfilePicture))
+        formatProfilePicture(imageTap)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.editProfilePicture))
-        formatProfilePicture(tap)
-        
-    
-       
+        let emailCellTap = UITapGestureRecognizer(target: self, action: #selector(self.emailRowPressed))
+        emailCell.addGestureRecognizer(emailCellTap)
     }
-
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
     
     func formatProfilePicture(_ tap: UITapGestureRecognizer) {
         profilePictureView.isUserInteractionEnabled = true
@@ -54,38 +96,20 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         profilePictureView.layer.cornerRadius = 60
     }
     
-    
     //MARK:- Display Name
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == displayName {
             if textField.text != "" {
                 updateProfile.updateDisplayName(newDisplayName: textField.text!)
                 self.view.endEditing(true)
             }
-            
-            
             print("setting display name")
             return true
         }
-        if textField == emailField {
-            
-        }
-        
-        
-        
         return true
     }
     
-    
-    
-    
-    
-    
-    
-    
     //MARK:- retrieving profile picture
-    
     func getProfilePicture(){
         //gets the local version of users profile picture for quick loading
         guard let user = Auth.auth().currentUser?.uid else {return}
@@ -96,11 +120,12 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
             profilePictureView.image = UIImage(data: image)
         } catch {
             print("error loading image \(error.localizedDescription)")
+            profilePictureView.image = UIImage(systemName: "person")
         }
         auth.currentUser?.reload(completion: { (error) in
             if error == nil {
-                let imageUrl = self.auth.currentUser?.photoURL
-                self.updateProfile.downloadProfilePicture(url: imageUrl!) { (result, error) in
+                guard let imageUrl = self.auth.currentUser?.photoURL else {return}
+                self.updateProfile.downloadProfilePicture(url: imageUrl) { (result, error) in
                     if error != nil {
                         print("There was an error downloading the profile picture")
                     } else {
@@ -113,20 +138,20 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     
     //MARK:- log out of app
 
-    @IBAction func logOutButtonPressed(_ sender: UIButton) {
+    fileprivate func logout(){
         do {
-               try Auth.auth().signOut()
-
-                self.performSegue(withIdentifier: "UnwindLogOut", sender: self)
-                print("Logged Out")
-            
-           }
+            try Auth.auth().signOut()
+            self.performSegue(withIdentifier: "UnwindLogOut", sender: self)
+            print("Logged Out")
+        }
         catch let signOutError as NSError {
-               print ("Error signing out: %@", signOutError)
-           }
-
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
+    @IBAction func logOutButtonPressed(_ sender: UIButton) {
+        logout()
+    }
     
     //objective C function to present the image picker after tapping the current profile picture
     @objc func editProfilePicture(){
@@ -134,11 +159,51 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
+    @objc func emailRowPressed(){
+        var passwordField = UITextField()
+        let alert = UIAlertController(title: "Enter your password to continue", message:"", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Submit", style: .default) { (action) in
+            if passwordField.text != "" {
+                guard let user = Auth.auth().currentUser else {return}
+                
+                let password = passwordField.text
+                // Prompt the user to re-provide their sign-in credentials
+                self.auth.signIn(withEmail: (user.email!), password: password!) { (authResult, error) in
+                    if error != nil {
+                        let passwordErrorAlert = UIAlertController(title: "Password Incorrect", message: "", preferredStyle: .alert)
+                        let defaultAction = UIAlertAction(title: "Ok", style: .default)
+                        passwordErrorAlert.addAction(defaultAction)
+                        self.present(passwordErrorAlert, animated: true, completion: nil)
+                        print("error logging user in")
+                    } else {
+                        print("user authenticated")
+                        self.performSegue(withIdentifier: "UpdateEmailSegue", sender: self.emailCell)
+                    }
+                }
+            } else {
+                let passwordErrorAlert = UIAlertController(title: "Password Incorrect", message: "", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "Ok", style: .default)
+                passwordErrorAlert.addAction(defaultAction)
+                self.present(passwordErrorAlert, animated: true, completion: nil)
+            }
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(action)
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Password"
+            alertTextField.textContentType = .password
+            alertTextField.isSecureTextEntry = true
+            passwordField = alertTextField
+        }
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
     
     
     
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 2
@@ -159,24 +224,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        print(indexPath.row)
     }
-
-    
-
-    
-    
-    
-    
-    
 }
-
-
-
-
-
-
-
-
 
 
 //MARK:- image picker extension
@@ -189,9 +239,6 @@ extension SettingsTableViewController: UIImagePickerControllerDelegate, UINaviga
         imagePicker.delegate = self
     }
 
-    
-    
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
@@ -205,8 +252,4 @@ extension SettingsTableViewController: UIImagePickerControllerDelegate, UINaviga
         }
         picker.dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-    
 }

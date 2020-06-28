@@ -13,7 +13,7 @@
             <objects>
                 <viewController title="SignIn" id="BYZ-38-t0r" customClass="SignedOutViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TemplateBackground" translatesAutoresizingMaskIntoConstraints="NO" id="UBr-aK-3wg">
@@ -96,7 +96,7 @@
             <objects>
                 <viewController id="5iF-6T-gxv" customClass="LoginViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ZQ-HF-9WR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TemplateBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Tec-x6-76A">
@@ -178,7 +178,7 @@
             <objects>
                 <viewController id="Bpz-u2-QSG" customClass="AddUserDetailsViewController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Scm-WQ-BEN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TemplateBackground" translatesAutoresizingMaskIntoConstraints="NO" id="sye-iB-f26">
@@ -375,27 +375,28 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="75" id="iqv-9o-iBw">
-                                        <rect key="frame" x="0.0" y="319" width="414" height="75"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="iqv-9o-iBw">
+                                        <rect key="frame" x="0.0" y="319" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iqv-9o-iBw" id="CeL-9V-Faz">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RBA-LC-KWE">
-                                                    <rect key="frame" x="20" y="4.5" width="374" height="66"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RBA-LC-KWE">
+                                                    <rect key="frame" x="20" y="10" width="355" height="24"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGW-SA-6h1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="175.5" height="24"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a new email" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YFL-Eq-D3e">
-                                                            <rect key="frame" x="0.0" y="32" width="374" height="34"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" textContentType="nickname"/>
-                                                        </textField>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCZ-AK-Vce">
+                                                            <rect key="frame" x="183.5" y="0.0" width="171.5" height="24"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <color key="textColor" name="Asbestos"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -407,7 +408,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="nqA-UL-ohw" style="IBUITableViewCellStyleDefault" id="5A0-PL-506">
-                                        <rect key="frame" x="0.0" y="394" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="362" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5A0-PL-506" id="FK5-aH-7W3">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
@@ -440,22 +441,101 @@
                     </navigationItem>
                     <connections>
                         <outlet property="displayName" destination="i0p-YQ-B7E" id="Ap4-vs-4AY"/>
-                        <outlet property="emailField" destination="YFL-Eq-D3e" id="Ix1-WM-Ixy"/>
+                        <outlet property="emailCell" destination="iqv-9o-iBw" id="Etw-0z-Wmh"/>
                         <outlet property="profilePictureView" destination="b02-ri-sNa" id="wme-ap-ndr"/>
+                        <outlet property="userEmailField" destination="CCZ-AK-Vce" id="m0E-u7-TRs"/>
                         <segue destination="IRN-p6-0hv" kind="unwind" identifier="UnwindLogOut" unwindAction="unwindToViewControllerWithSegue:" id="hk8-wz-P9X"/>
+                        <segue destination="wmC-lT-ysS" kind="showDetail" identifier="UpdateEmailSegue" id="t09-0M-ade"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40P-Tj-Ysj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="IRN-p6-0hv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6134.7826086956529" y="1030.5803571428571"/>
+            <point key="canvasLocation" x="6033" y="1405"/>
+        </scene>
+        <!--Update Email View Controller-->
+        <scene sceneID="e6l-Vs-amE">
+            <objects>
+                <viewController id="wmC-lT-ysS" customClass="UpdateEmailViewController" customModule="ProductivityApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zyQ-Fx-YfM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7BK-nj-Idl" userLabel="email stack">
+                                <rect key="frame" x="40" y="100" width="334" height="181"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWS-8v-Ycu">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0a6-g4-dYy">
+                                        <rect key="frame" x="0.0" y="40.5" width="334" height="70.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update your email here:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4n-e4-lVb">
+                                                <rect key="frame" x="0.0" y="0.0" width="334" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z9b-tT-SMf">
+                                                <rect key="frame" x="0.0" y="28.5" width="334" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5j-S1-s1d" userLabel="Error">
+                                                <rect key="frame" x="0.0" y="70.5" width="334" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHJ-pN-w9f">
+                                        <rect key="frame" x="0.0" y="131" width="334" height="50"/>
+                                        <color key="backgroundColor" name="MidnightBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="vVG-iq-Md4"/>
+                                        </constraints>
+                                        <state key="normal" title="Update Email">
+                                            <color key="titleColor" name="Clouds"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signUpButtonPressed:" destination="sSD-AL-ZrJ" eventType="touchUpInside" id="Ook-Jz-dtV"/>
+                                            <action selector="updateEmailPressed:" destination="wmC-lT-ysS" eventType="touchUpInside" id="f39-gu-abK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7BK-nj-Idl" firstAttribute="top" secondItem="9WF-xu-Jc8" secondAttribute="top" constant="100" id="5H4-sD-ppy"/>
+                            <constraint firstItem="9WF-xu-Jc8" firstAttribute="trailing" secondItem="7BK-nj-Idl" secondAttribute="trailing" constant="40" id="5g8-4L-yus"/>
+                            <constraint firstItem="7BK-nj-Idl" firstAttribute="centerX" secondItem="zyQ-Fx-YfM" secondAttribute="centerX" id="tMa-WP-rmL"/>
+                            <constraint firstItem="7BK-nj-Idl" firstAttribute="leading" secondItem="9WF-xu-Jc8" secondAttribute="leading" constant="40" id="wjg-bT-PcE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9WF-xu-Jc8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0Dr-OT-wLz"/>
+                    <connections>
+                        <outlet property="currentEmaillabel" destination="HWS-8v-Ycu" id="aeW-v1-aWs"/>
+                        <outlet property="emailUpdateButton" destination="cHJ-pN-w9f" id="DQZ-WD-5Nx"/>
+                        <outlet property="errorMessageLabel" destination="V5j-S1-s1d" id="D6L-cc-jUK"/>
+                        <outlet property="newEmailTextField" destination="Z9b-tT-SMf" id="d6x-uH-y8E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PSF-tH-hD4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7332" y="1405"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="V6l-MQ-1Nr">
             <objects>
                 <viewController id="sSD-AL-ZrJ" customClass="SignUpViewController" customModule="ProductivityApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CP9-wg-FlQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TemplateBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Wus-cd-sg7">
@@ -604,12 +684,15 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QEn-Ue-zhr"/>
+        <segue reference="lOK-wu-UCL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="TemplateBackground" width="3576" height="5364"/>
         <image name="chevron.right.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="Asbestos">
+            <color red="0.49900001287460327" green="0.55099999904632568" blue="0.55199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Clouds">
             <color red="0.92699998617172241" green="0.93999999761581421" blue="0.94599997997283936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

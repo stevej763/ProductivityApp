@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
-
+//testing git
         let auth = Auth.auth()
         let storage = Storage.storage()
         let updateProfile = ProfileUpdate()

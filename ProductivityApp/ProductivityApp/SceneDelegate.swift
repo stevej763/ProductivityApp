@@ -7,17 +7,39 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    let auth = Auth.auth()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        
+//        testing seemless app openning without flash of login page
+        
+        
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//
+//        if auth.currentUser == nil {
+//            let loginNavController = storyboard.instantiateViewController(identifier: "LoginNavigationController")
+//                   window?.rootViewController = loginNavController
+//        }
+//        if auth.currentUser != nil {
+//            let appNavController = storyboard.instantiateViewController(identifier: "AppHomeNavigationController")
+//                   window?.rootViewController = appNavController
+//        }
+        
+       
+        
+        
         
     }
 

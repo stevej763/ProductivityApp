@@ -1,2 +1,2 @@
-# CleanLoginTemplate
-A tempalte for any apps that need a login
+# Productivity App
+A notes and productivity app usign a firebase backend

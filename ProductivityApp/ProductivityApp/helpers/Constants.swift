@@ -23,6 +23,7 @@ struct K {
             static let titleField = "noteTitle"
             static let excerptField = "noteExcerpt"
             static let updatedOnField = "noteEditDate"
+            
         }
         
     }

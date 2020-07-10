@@ -48,7 +48,15 @@ struct ProfileUpdate {
     }
     
     
-    
+    func logout(){
+        do {
+            try Auth.auth().signOut()
+            print("Logged Out")
+        }
+        catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
     
     
     
@@ -102,7 +110,6 @@ struct ProfileUpdate {
         
     }
     
-    
     //function to download the current users profile picutre from firebase
     func downloadProfilePicture(url imageUrl: URL, completion: @escaping (_ result: UIImage?, _ error: Error?) -> Void) {
         let user = auth.currentUser?.uid
@@ -126,6 +133,9 @@ struct ProfileUpdate {
         
         
     }
+    
+    
+    
     
     
     

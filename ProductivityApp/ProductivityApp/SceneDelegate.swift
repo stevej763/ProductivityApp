@@ -15,31 +15,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let auth = Auth.auth()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
         guard let _ = (scene as? UIWindowScene) else { return }
         
+        let sb = UIStoryboard(name: "Main", bundle: nil)
         
-//        testing seemless app openning without flash of login page
-        
-        
-        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//
-//
-//        if auth.currentUser == nil {
-//            let loginNavController = storyboard.instantiateViewController(identifier: "LoginNavigationController")
-//                   window?.rootViewController = loginNavController
-//        }
-//        if auth.currentUser != nil {
-//            let appNavController = storyboard.instantiateViewController(identifier: "AppHomeNavigationController")
-//                   window?.rootViewController = appNavController
-//        }
-        
-       
-        
-        
+        auth.addStateDidChangeListener({ auth, user in
+            if (user != nil) {
+                print("State change: User Logged In")
+                guard let rootVC = sb.instantiateViewController(identifier: "AppHomeNavigationController") as? AppHomeNavigationController else {
+                    print("ViewController not found")
+                    return
+                }
+                self.window?.rootViewController = rootVC
+            }
+            else {
+                print("State Change: User not logged in")
+                guard let rootVC = sb.instantiateViewController(identifier: "LoginNavigationController") as? LoginAndSignupNavigationViewController else {
+                    print("ViewController not found")
+                    return
+                }
+                self.window?.rootViewController = rootVC
+            }
+        })
+        window?.makeKeyAndVisible()
         
     }
 

@@ -39,10 +39,10 @@ let auth = Auth.auth()
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
-        if Auth.auth().currentUser != nil {
-            self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: self)
-            print("already logged in")
-        }
+//        if Auth.auth().currentUser != nil {
+//            self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: self)
+//            print("already logged in")
+//        }
         
         
         //debug logout user

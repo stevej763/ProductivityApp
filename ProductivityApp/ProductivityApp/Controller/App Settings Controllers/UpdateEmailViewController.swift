@@ -47,7 +47,7 @@ class UpdateEmailViewController: UIViewController {
                         self.errorMessageLabel.text = error!.localizedDescription
                     }
                     
-                    print(error?.localizedDescription)
+                    print(error!)
                 } else {
                     self.profileUpdate.updateEmail(newEmail: self.newEmailTextField.text!)
                         self.dismiss(animated: true)

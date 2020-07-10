@@ -10,6 +10,14 @@
 		403C87013AC2524F4E5B7E20 /* Pods_ProductivityApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45B7996CC90A9B8ADCDC7A20 /* Pods_ProductivityApp.framework */; };
 		AA0A013F249D13F90008D54C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA0A013E249D13F90008D54C /* GoogleService-Info.plist */; };
 		AA0A0141249D23550008D54C /* AddUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0A0140249D23550008D54C /* AddUserDetailsViewController.swift */; };
+		AA63C74C24AE6C5400B46C6A /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63C74B24AE6C5400B46C6A /* KeyboardLayoutConstraint.swift */; };
+		AA63C75224AFC9C500B46C6A /* alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63C75124AFC9C500B46C6A /* alert.swift */; };
+		AA63C75624B09C7200B46C6A /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63C75524B09C7200B46C6A /* NotesListViewController.swift */; };
+		AA63C75B24B09D3D00B46C6A /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63C75924B09D3D00B46C6A /* NoteCell.swift */; };
+		AA63C75C24B09D3D00B46C6A /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA63C75A24B09D3D00B46C6A /* NoteCell.xib */; };
+		AA63C75E24B09F8000B46C6A /* NoteExcerpt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63C75D24B09F8000B46C6A /* NoteExcerpt.swift */; };
+		AA63C76024B0A0E000B46C6A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63C75F24B0A0E000B46C6A /* Constants.swift */; };
+		AA63C76224B0AB4700B46C6A /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63C76124B0AB4700B46C6A /* EditNoteViewController.swift */; };
 		AA710EB524A010FC009C8FDD /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA710EB424A010FC009C8FDD /* SettingsTableViewController.swift */; };
 		AA710EBE24A4C4BD009C8FDD /* ProfileUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA710EBD24A4C4BD009C8FDD /* ProfileUpdate.swift */; };
 		AA80C0292499727300F4614F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80C0282499727300F4614F /* AppDelegate.swift */; };
@@ -32,6 +40,14 @@
 		45B7996CC90A9B8ADCDC7A20 /* Pods_ProductivityApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductivityApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0A013E249D13F90008D54C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AA0A0140249D23550008D54C /* AddUserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserDetailsViewController.swift; sourceTree = "<group>"; };
+		AA63C74B24AE6C5400B46C6A /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		AA63C75124AFC9C500B46C6A /* alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alert.swift; sourceTree = "<group>"; };
+		AA63C75524B09C7200B46C6A /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
+		AA63C75924B09D3D00B46C6A /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		AA63C75A24B09D3D00B46C6A /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
+		AA63C75D24B09F8000B46C6A /* NoteExcerpt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteExcerpt.swift; sourceTree = "<group>"; };
+		AA63C75F24B0A0E000B46C6A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AA63C76124B0AB4700B46C6A /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 		AA710EB424A010FC009C8FDD /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		AA710EBD24A4C4BD009C8FDD /* ProfileUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdate.swift; sourceTree = "<group>"; };
 		AA80C0252499727300F4614F /* ProductivityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductivityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,10 +97,57 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AA63C74D24AE8AC300B46C6A /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AA63C75F24B0A0E000B46C6A /* Constants.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		AA63C75324B09C2D00B46C6A /* App Home Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA97219524A4F324000A46FD /* AppHomeNavigationController.swift */,
+				AAB375E6249AA56200055CF2 /* AppHomeViewController.swift */,
+			);
+			path = "App Home Controllers";
+			sourceTree = "<group>";
+		};
+		AA63C75424B09C4100B46C6A /* App Notes Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA63C75524B09C7200B46C6A /* NotesListViewController.swift */,
+				AA63C76124B0AB4700B46C6A /* EditNoteViewController.swift */,
+			);
+			path = "App Notes Controllers";
+			sourceTree = "<group>";
+		};
+		AA63C75724B09D0B00B46C6A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA63C75824B09D1200B46C6A /* Notes */,
+				AA80C02E2499727300F4614F /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AA63C75824B09D1200B46C6A /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				AA63C75924B09D3D00B46C6A /* NoteCell.swift */,
+				AA63C75A24B09D3D00B46C6A /* NoteCell.xib */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
 		AA710EB124A00C4B009C8FDD /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				AA710EBD24A4C4BD009C8FDD /* ProfileUpdate.swift */,
+				AA63C74B24AE6C5400B46C6A /* KeyboardLayoutConstraint.swift */,
+				AA63C75124AFC9C500B46C6A /* alert.swift */,
+				AA63C75D24B09F8000B46C6A /* NoteExcerpt.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,11 +173,12 @@
 		AA80C0272499727300F4614F /* ProductivityApp */ = {
 			isa = PBXGroup;
 			children = (
+				AA63C74D24AE8AC300B46C6A /* helpers */,
 				AA80C0282499727300F4614F /* AppDelegate.swift */,
 				AA80C02A2499727300F4614F /* SceneDelegate.swift */,
 				AAB375E1249AA4F500055CF2 /* Controller */,
 				AA710EB124A00C4B009C8FDD /* Model */,
-				AA80C02E2499727300F4614F /* Main.storyboard */,
+				AA63C75724B09D0B00B46C6A /* View */,
 				AA80C0312499727700F4614F /* Assets.xcassets */,
 				AA80C0332499727700F4614F /* LaunchScreen.storyboard */,
 				AA80C0362499727700F4614F /* Info.plist */,
@@ -148,9 +212,9 @@
 		AAB375E1249AA4F500055CF2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AA63C75424B09C4100B46C6A /* App Notes Controllers */,
+				AA63C75324B09C2D00B46C6A /* App Home Controllers */,
 				AA97219324A4F2CA000A46FD /* App Login Controllers */,
-				AAB375E6249AA56200055CF2 /* AppHomeViewController.swift */,
-				AA97219524A4F324000A46FD /* AppHomeNavigationController.swift */,
 				AA97219424A4F2E2000A46FD /* App Settings Controllers */,
 			);
 			path = Controller;
@@ -217,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA80C0352499727700F4614F /* LaunchScreen.storyboard in Resources */,
+				AA63C75C24B09D3D00B46C6A /* NoteCell.xib in Resources */,
 				AA0A013F249D13F90008D54C /* GoogleService-Info.plist in Resources */,
 				AA80C0322499727700F4614F /* Assets.xcassets in Resources */,
 				AA80C0302499727300F4614F /* Main.storyboard in Resources */,
@@ -273,17 +338,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA80C02D2499727300F4614F /* SignedOutViewController.swift in Sources */,
+				AA63C76024B0A0E000B46C6A /* Constants.swift in Sources */,
 				AA80C0292499727300F4614F /* AppDelegate.swift in Sources */,
 				AAB375E3249AA54200055CF2 /* SignUpViewController.swift in Sources */,
 				AAB375E5249AA54E00055CF2 /* LoginViewController.swift in Sources */,
 				AA0A0141249D23550008D54C /* AddUserDetailsViewController.swift in Sources */,
 				AA710EB524A010FC009C8FDD /* SettingsTableViewController.swift in Sources */,
 				AA80C02B2499727300F4614F /* SceneDelegate.swift in Sources */,
+				AA63C75E24B09F8000B46C6A /* NoteExcerpt.swift in Sources */,
 				AA97219A24A8E310000A46FD /* PasswordResetViewController.swift in Sources */,
 				AAB817DE249D8640004A66FB /* LoginAndSignupNavigationViewController.swift in Sources */,
 				AA97219824A6591E000A46FD /* UpdateEmailViewController.swift in Sources */,
 				AA97219624A4F324000A46FD /* AppHomeNavigationController.swift in Sources */,
+				AA63C74C24AE6C5400B46C6A /* KeyboardLayoutConstraint.swift in Sources */,
+				AA63C75624B09C7200B46C6A /* NotesListViewController.swift in Sources */,
 				AA710EBE24A4C4BD009C8FDD /* ProfileUpdate.swift in Sources */,
+				AA63C75B24B09D3D00B46C6A /* NoteCell.swift in Sources */,
+				AA63C75224AFC9C500B46C6A /* alert.swift in Sources */,
+				AA63C76224B0AB4700B46C6A /* EditNoteViewController.swift in Sources */,
 				AAB375E7249AA56200055CF2 /* AppHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +501,7 @@
 			baseConfigurationReference = 10418F965B11EF21A4B9731C /* Pods-ProductivityApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ProductivityApp/ProductivityApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R8D3TFCC85;
 				INFOPLIST_FILE = ProductivityApp/Info.plist;
@@ -448,6 +521,7 @@
 			baseConfigurationReference = CCFBF299A2B8E501041952AE /* Pods-ProductivityApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ProductivityApp/ProductivityApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R8D3TFCC85;
 				INFOPLIST_FILE = ProductivityApp/Info.plist;

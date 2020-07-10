@@ -10,11 +10,12 @@ import UIKit
 import Firebase
 
 class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
-//testing git
+       
         let auth = Auth.auth()
         let storage = Storage.storage()
         let updateProfile = ProfileUpdate()
         let db = Firestore.firestore()
+        let profileUpdate = ProfileUpdate()
         var imagePicker: UIImagePickerController!
     
     @IBOutlet weak var profilePictureView: UIImageView!
@@ -22,6 +23,30 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var userEmailField: UILabel!
     @IBOutlet weak var emailCell: UITableViewCell!
     @IBOutlet weak var passwordCell: UITableViewCell!
+    @IBOutlet weak var logoutCell: UITableViewCell!
+    
+    
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateSettingsTitle()
+        checkForEmailUpdate()
+        getProfilePicture()
+        defineImagePicker()
+        ProfileUpdateCellWasTapped()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+
+       
+        
+        self.displayName.text = self.auth.currentUser?.displayName
+        self.userEmailField.text = self.auth.currentUser?.email
+        displayName.delegate = self
+        auth.currentUser?.reload(completion: { (error) in
+        self.displayName.text = self.auth.currentUser?.displayName
+        })
+    }
     
     
     func checkForEmailUpdate(){
@@ -41,17 +66,20 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
             guard let currentEmail = data["email"] as? String else {
                 return
             }
+                self.userEmailField.text = data["email"] as? String
+            
             
             if currentEmail == self.auth.currentUser?.email {
                 
-                let currentDisplayName = data["displayName"] as! String
-                self.userEmailField.text = data["email"] as? String
-                self.title = "\(currentDisplayName)'s Settings"
-                self.displayName.text = currentDisplayName
-                
+                if let currentDisplayName = data["displayName"] as? String {
+                    self.displayName.text = currentDisplayName
+                    self.title = "\(currentDisplayName)'s Settings"
+                } else {
+                    self.title = "Settings"
+                }
             } else {
                 print("email changed")
-                self.logout()
+                self.profileUpdate.logout()
             }
             
             
@@ -62,34 +90,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     func updateSettingsTitle(){
         if let cloudDisplayName = auth.currentUser?.displayName {
         title = "\(cloudDisplayName)'s Settings"
-            
-        
         } else {
             title = "Settings"
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateSettingsTitle()
-        checkForEmailUpdate()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-        
-        getProfilePicture()
-        defineImagePicker()
-        ProfileUpdateCellWasTapped()
-        
-        
-        self.displayName.text = self.auth.currentUser?.displayName
-        self.userEmailField.text = self.auth.currentUser?.email
-        displayName.delegate = self
-        
-        auth.currentUser?.reload(completion: { (error) in
-            self.displayName.text = self.auth.currentUser?.displayName
-        })
-        
-        
     }
     
     func formatProfilePicture(_ tap: UITapGestureRecognizer) {
@@ -138,28 +141,12 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         })
     }
     
-    //MARK:- log out of app
 
-    fileprivate func logout(){
-        do {
-            try Auth.auth().signOut()
-            self.performSegue(withIdentifier: "UnwindLogOut", sender: self)
-            print("Logged Out")
-        }
-        catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
     
-    @IBAction func logOutButtonPressed(_ sender: UIButton) {
-        logout()
-    }
+//MARK:- fucntions for table cell taps
     
-    //objective C function to present the image picker after tapping the current profile picture
-    @objc func editProfilePicture(){
-        self.present(imagePicker, animated: true, completion: nil)
-        
-    }
+
+
     
     fileprivate func ProfileUpdateCellWasTapped() {
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(self.editProfilePicture))
@@ -170,6 +157,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         
         let passwordCellTap = UITapGestureRecognizer(target: self, action: #selector(self.passwordRowPressed))
         passwordCell.addGestureRecognizer(passwordCellTap)
+        
+        let LogoutCellTap = UITapGestureRecognizer(target: self, action: #selector(self.logoutPressed))
+        logoutCell.addGestureRecognizer(LogoutCellTap)
     }
     
     @objc func emailRowPressed(){
@@ -212,20 +202,28 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    
+        //objective C functions for cell taps
+    
     @objc func passwordRowPressed(){
         print("Moving to update password page")
         self.performSegue(withIdentifier: "UpdatePasswordSegue", sender: self)
         
     }
     
+    @objc func editProfilePicture(){
+        self.present(imagePicker, animated: true, completion: nil)
+        
+    }
     
-    
-    
+    @objc func logoutPressed(_ sender: UIButton) {
+           profileUpdate.logout()
+       }
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -235,6 +233,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         }
         if section == 1 {
             return 3
+        }
+        if section == 2 {
+            return 1
         }
         else {
             return 0
@@ -271,3 +272,5 @@ extension SettingsTableViewController: UIImagePickerControllerDelegate, UINaviga
         picker.dismiss(animated: true, completion: nil)
     }
 }
+
+
